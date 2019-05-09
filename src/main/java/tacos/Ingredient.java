@@ -14,4 +14,6 @@ public class Ingredient {
     public static enum Type{
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
     }
+
+
 }
