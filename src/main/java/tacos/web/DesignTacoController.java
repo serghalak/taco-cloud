@@ -1,6 +1,5 @@
 package tacos.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -8,12 +7,11 @@ import org.springframework.web.bind.annotation.*;
 import tacos.Ingredient;
 import tacos.Order;
 import tacos.Taco;
-import tacos.data.IngredientRepository;
-import tacos.data.TacoRepository;
+import tacos.data.IngredientRepo;
+import tacos.data.TacoRepo;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,8 +23,8 @@ public class DesignTacoController {
     private static final org.slf4j.Logger log =
             org.slf4j.LoggerFactory.getLogger(DesignTacoController.class);
 
-    private IngredientRepository ingredientRepo;
-    private TacoRepository tacoRepository;
+    private IngredientRepo ingredientRepository;
+    private TacoRepo tacoRepository;
 
     //@Autowired
 //    public DesignTacoController(IngredientRepository ingredientRepo) {
@@ -34,9 +32,9 @@ public class DesignTacoController {
 //    }
 
     //@Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo,
-                                TacoRepository tacoRepository) {
-        this.ingredientRepo = ingredientRepo;
+    public DesignTacoController(IngredientRepo ingredientRepository,
+                                TacoRepo tacoRepository) {
+        this.ingredientRepository = ingredientRepository;
         this.tacoRepository=tacoRepository;
     }
 
@@ -65,7 +63,10 @@ public class DesignTacoController {
 //                new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE)
 //        );
         List<Ingredient>ingredients= new ArrayList<>();
-        ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+        Iterable<Ingredient> all = ingredientRepository.findAll();
+        System.out.println(""+ingredientRepository.findAll());
+        ingredientRepository.findAll().forEach(i -> ingredients.add(i));
+        System.out.println("ingredient: " + ingredients);
         Ingredient.Type[] types=Ingredient.Type.values();
         for(Ingredient.Type type : types){
             System.out.println("Type: " + type);

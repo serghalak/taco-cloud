@@ -7,9 +7,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.bind.support.SimpleSessionStatus;
 import tacos.Order;
-import tacos.data.OrderRepository;
+import tacos.data.OrderRepo;
 
 import javax.validation.Valid;
 
@@ -19,9 +18,9 @@ import javax.validation.Valid;
 @SessionAttributes("order")
 public class OrderController {
 
-    private final OrderRepository orderRepository;
+    private final OrderRepo orderRepository;
 
-    public OrderController(OrderRepository orderRepository) {
+    public OrderController(OrderRepo orderRepository) {
         this.orderRepository = orderRepository;
     }
 

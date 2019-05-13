@@ -4,6 +4,7 @@ package tacos;
 import java.util.Date;
 import java.util.List;
 // end::allButValidation[]
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,8 +12,11 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
+@Entity
 public class Taco {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     // end::allButValidation[]
@@ -23,9 +27,15 @@ public class Taco {
     // end::allButValidation[]
     @Size(min=1, message="You must choose at least 1 ingredient")
     // tag::allButValidation[]
+    @ManyToMany(targetEntity = Ingredient.class)
     private List<Ingredient> ingredients;
 
     private Date createdAt;
+
+    @PrePersist
+    void createAt(){
+        this.createdAt=new Date();
+    }
 
 }
 //end::allButValidation[]
