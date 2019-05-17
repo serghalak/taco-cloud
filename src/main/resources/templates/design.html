@@ -10,10 +10,14 @@
 
 <body>
 <h1>Design your taco!</h1>
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
 <img th:src="@{/images/TacoCloud.png}"/>
 
 <!-- tag::formTag[] -->
-<form method="POST" th:object="${taco}">
+<!--<form method="POST" th:object="${taco}" >-->
+    <form th:method="POST" th:object="${taco}" th:action="@{/design}" id="tacoForm">
     <!-- end::all[] -->
 
     <span class="validationError"
