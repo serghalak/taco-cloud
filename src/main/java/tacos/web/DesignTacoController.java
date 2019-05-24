@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequestMapping("/design")
-@Controller
-@SessionAttributes("order")
+//@RequestMapping("/design")
+//@Controller
+//@SessionAttributes("order")
 public class DesignTacoController {
 
     private static final org.slf4j.Logger log =

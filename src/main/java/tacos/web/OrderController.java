@@ -18,9 +18,9 @@ import tacos.data.UserRepository;
 import javax.validation.Valid;
 
 @Slf4j
-@Controller
-@RequestMapping("/orders")
-@SessionAttributes("order")
+//@Controller
+//@RequestMapping("/orders")
+//@SessionAttributes("order")
 //@ConfigurationProperties(prefix = "taco.orders")
 public class OrderController {
 
